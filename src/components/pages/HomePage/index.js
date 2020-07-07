@@ -4,7 +4,7 @@ import actions from '../../../redux/actions';
 import { get, map } from 'lodash';
 import ScreenBase from '../../elements/ScreenBase';
 import SlideBanners from '../../elements/SlideBanners';
-
+import MovieList from '../../elements/MovieList'
 const HomePage = () => {
 
   const dispatch = useDispatch();
@@ -36,8 +36,13 @@ const HomePage = () => {
   })
   return (
     <ScreenBase>
-      <div id={"home-page"}>
+      <div className={"home-page"} id={"home-page"}>
         <SlideBanners data={_trending} />
+        <div className={"home-content"}>
+          <div className={"home-container"}>
+            <MovieList />
+          </div>
+        </div>
       </div>
     </ScreenBase>
   );

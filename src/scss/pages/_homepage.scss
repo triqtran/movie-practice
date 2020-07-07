@@ -1,0 +1,15 @@
+@import "./../commons/variables";
+
+.home-page {
+	.home-content {
+		background-color: $LAYOUT_WHITE_DARKER;
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		.home-container {
+			width: 94%;
+			min-height: 100%;
+			
+		}
+	}
+}

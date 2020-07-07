@@ -11,7 +11,9 @@ $TEXT_GRAY_DARKER: #636366;
 $TEXT_GRAY: #85868F;
 $TEXT_GRAY_LIGHTER: #BDBEC5;
 $TEXT_WHITE: #FFFFFF;
-
+$LINE_NAV_GREY: #DFDFDF;
+$TEXT_GREY_LIGHTER: #9D9EA4;
+$TEXT_GREY_NEAR: #BABBC3;
 //Header
 $HEADER_HEIGHT: 10px;
 $HEADER_BACKGROUND: transparent;
@@ -27,3 +29,26 @@ $FOOTER_PADDING_VERTICAL: 28px;
 //Content
 $CONTENT_PADDING_HORIZONTAL: 130px;
 $CONTENT_PADDING_VERTICAL: 28px;
+
+////******************* FONT *******************////
+$TYPOGRAPHY:         'Nunito Sans', sans-serif;
+
+%TYPO_BOLD {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+%TYPO_REGULAR {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+//Bold
+%FONT_BOLD_15px       {font-size:  15px; @extend %TYPO_BOLD; }
+
+//Regular
+%FONT_REGULAR_15px    {font-size:  15px; @extend %TYPO_REGULAR; }
+%FONT_REGULAR_13px    {font-size:  13px; @extend %TYPO_REGULAR; }
+

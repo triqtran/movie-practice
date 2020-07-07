@@ -1,0 +1,64 @@
+@import "../commons/variables";
+
+.card {
+	width: 25%;
+	// margin: 0 10px;
+	box-sizing: border-box;
+	cursor: pointer;
+	position: relative;
+	margin-bottom: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	.card-item {
+		width: 90%;
+		background-color: $LAYOUT_WHITE;
+		box-shadow: 0 0 11px 4px $LAYOUT_GRAY;
+		.card-poster {
+			width: 100%;
+		}
+		.date {
+			position: absolute;
+			bottom: 91px;
+			left: 28px;
+			color: $TEXT_GREY_NEAR;
+		}
+		.card-content {
+			position: relative;
+			height: 70px;
+			align-items: center;
+			padding: 0 14px;
+			display: flex;
+			justify-content: space-between;
+			.card-description {
+				.title {
+					overflow: hidden;
+					-o-text-overflow: ellipsis;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					width: 13vw;
+					margin-bottom: 3px;
+					@extend %FONT_BOLD_15px;
+				}
+				.overview {
+					color: $TEXT_GRAY;
+					@extend %FONT_REGULAR_13px;
+				}
+			}
+			.card-vote {
+				position: absolute;
+				top: 16px;
+				// left: 169px;
+				right: 8px;
+				width: 29px;
+				height: 29px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border: 1px solid $LAYOUT_PINK;
+				color: $TEXT_PINK;
+				@extend %FONT_REGULAR_13px;
+			}
+		}
+	}
+}
