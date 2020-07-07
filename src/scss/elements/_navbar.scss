@@ -1,0 +1,25 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  * {
+    margin: 0 5px;
+    &:last-child {
+      margin-right: 0;
+    }
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar {
+    padding: 10px 5px;
+    min-width: 70px;
+    &, * {
+      font-size: 14px;
+    }
+  }
+}

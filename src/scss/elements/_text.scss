@@ -1,0 +1,33 @@
+.text-white {
+  color: $TEXT_WHITE;
+}
+.text-blue-black {
+  color: $TEXT_BLUE_BLACK;
+}
+.text-gray {
+  color: $TEXT_GRAY;
+}
+.text-gray-lighter {
+  color: $TEXT_GRAY_LIGHTER;
+}
+.text-gray-darker {
+  color: $TEXT_GRAY_DARKER;
+}
+.text-pink {
+  color: $TEXT_PINK;
+}
+
+.ic-socical {
+  padding: 5px;
+  color: #FFF;
+  background-color: #D8D8D8;
+  border-radius: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .ic-socical {
+    padding: 3px;
+    height: 14px;
+    width: 14px;
+  }
+}

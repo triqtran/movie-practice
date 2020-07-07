@@ -1,0 +1,41 @@
+.btn {
+  min-height: 10px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $LAYOUT_PINK;
+  border: none;
+  &, p {
+    color: $TEXT_WHITE;
+  }
+  &.btn-o {
+    background-color: $LAYOUT_TRANSPARENT;
+  }
+  &.btn-border-white {
+    border: 1px solid $TEXT_WHITE;
+  }
+  &.btn-primary {
+    background-color: $LAYOUT_PINK;
+    &, p {
+      color: $TEXT_WHITE;
+    }
+  }
+  &.btn-darker {
+    background-color: $LAYOUT_GRAY;
+    &, p {
+      color: $TEXT_BLUE_BLACK;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .btn {
+    padding: 10px 5px;
+    min-width: 70px;
+    &, * {
+      font-size: 14px;
+    }
+  }
+}

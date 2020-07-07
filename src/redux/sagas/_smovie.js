@@ -1,7 +1,8 @@
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import types from "../actions/types";
 import services from "../../services";
-import { concat } from "lodash";
+import { slice, get, sortBy, concat } from "lodash";
+import { SIZE_BANNER } from "../../utils/Constant";
 
 function* getPopularMovies (action) {
   try {
@@ -42,14 +43,11 @@ function* getUpcomingMovies (action) {
   }
 }
 
-function* getTrending (action) {
+function* getTrending () {
   try {
-    const { filter } = action;
     const data = yield call(services.getListTrendings);
-    if(filter) {
-      //filtering data;
-    }
-    yield put({ type: types.GET_BANNER_TRENDING_SUCCESS, data });
+    const list = get(data, "results", []);
+    yield put({ type: types.GET_BANNER_TRENDING_SUCCESS, data: slice(list,0, SIZE_BANNER) });
   } catch(error) {
     yield put({ type: types.GET_BANNER_TRENDING_FAILED, error });
   }
@@ -61,7 +59,16 @@ function* getListGenres () {
       call(services.getMovieGenres),
       call(services.getTVGenres),
     ]);
-    yield put({ type: types.GET_LIST_GENRES, data: concat(movies, tvs) });
+    let result = new Map();
+    const genres = concat(movies.genres, tvs.genres);
+    genres.forEach(item => result.set(item.id, item));
+    let temp = [];
+    result.forEach((value, key) => temp.push(value))
+    yield put({ 
+      type: types.GET_LIST_GENRES_SUCCESS, 
+      data: sortBy(temp, [(item) => { return item.id; }]),
+      genreMaps: result
+    });
   } catch(error) {
     yield put({ type: types.GET_BANNER_TRENDING_FAILED, error });
   }

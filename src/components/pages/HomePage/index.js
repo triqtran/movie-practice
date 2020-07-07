@@ -1,32 +1,45 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import actions from '../../../redux/actions';
-import { get } from 'lodash';
+import { get, map } from 'lodash';
+import ScreenBase from '../../elements/ScreenBase';
+import SlideBanners from '../../elements/SlideBanners';
 
 const HomePage = () => {
 
   const dispatch = useDispatch();
 
-  const movieData = useSelector(state => get(state, "movie"));
+  const movieData = useSelector(state => get(state, "movie"), shallowEqual);
 
   useEffect(() => {
     onGetBannerTrending();
     onGetPopularMovies();
+    onGetListGenres();
   }, []);
 
   const onGetPopularMovies = () => dispatch(actions.getPopularMovies());
 
-  const onGetTopRatedMovies = () => dispatch(actions.getTopRatedMovies())
+  // const onGetTopRatedMovies = () => dispatch(actions.getTopRatedMovies())
 
-  const onGetUpcomingMovies = () => dispatch(actions.getUpcomingMovies());
+  // const onGetUpcomingMovies = () => dispatch(actions.getUpcomingMovies());
 
   const onGetBannerTrending = () => dispatch(actions.getBannerTrending());
 
+  const onGetListGenres = () => dispatch(actions.getListGenres());
+
+  // const genreData = get(movieData, "genres");
+  const genreMapData = get(movieData, "genreMaps", new Map())
+  const trendingData = get(movieData, "trendings", []),
+  _trending = map(trendingData, item => {
+    const genreIds = get(item, "genre_ids", []);
+    return { ...item, genreNames: map(genreIds, gid => get(genreMapData.get(gid), "name", "")) }
+  })
   return (
-    <div id={"home-page"}>
-      <p>Home Page</p>
-      
-    </div>
+    <ScreenBase>
+      <div id={"home-page"}>
+        <SlideBanners data={_trending} />
+      </div>
+    </ScreenBase>
   );
 }
 
