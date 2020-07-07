@@ -8,18 +8,22 @@ const Card = props => {
   const postPath = get(props,'poster_path', ''),
   date = get(props,'release_date', ''),
   vote = get(props,'vote_average', 0),
-  title = get(props, 'original_title', '')
-  // overview = get(props, 'overview', '')
+  title = get(props, 'original_title', ''),
+  description = get(props, 'overview', ''),
+  viewType = get(props,'viewType', '')
   
   return (
     <div className={'card'}>
       <div className={'card-item'}>
-        <img className={'card-poster'} src={Image(postPath)} alt={'imagePoster'} />
+        <div className={'card-img'}>
+          <img className={'card-poster'} src={Image(postPath)} alt={'imagePoster'} />
+        </div>
         <div className={'date'}>{common.sliceString(date)}</div>
         <div className={'card-content'}>
           <div className={'card-description'}>
             <div className={'title'}>{title}</div>
             <div className={'overview'}>Action, music</div>
+            {/* <div className={`description ${viewType}`}>{description}</div> */}
           </div>
           <div className={'card-vote'}>{vote}</div>
         </div>

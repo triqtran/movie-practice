@@ -14,8 +14,12 @@
 		width: 90%;
 		background-color: $LAYOUT_WHITE;
 		box-shadow: 0 0 11px 4px $LAYOUT_GRAY;
-		.card-poster {
-			width: 100%;
+		.card-img {
+			overflow: hidden;
+			max-height: 450px;
+			.card-poster {
+				width: 100%;
+			}
 		}
 		.date {
 			position: absolute;
@@ -44,6 +48,11 @@
 					color: $TEXT_GRAY;
 					@extend %FONT_REGULAR_13px;
 				}
+				.description{
+					&.grid{
+						display: none;
+					}
+				}
 			}
 			.card-vote {
 				position: absolute;
@@ -58,6 +67,24 @@
 				border: 1px solid $LAYOUT_PINK;
 				color: $TEXT_PINK;
 				@extend %FONT_REGULAR_13px;
+			}
+		}
+
+	}
+}
+
+@media only screen and (max-width: 768px){
+	.card{
+		.card-item{
+			.card-img {
+				overflow: hidden;
+				max-height: 360px;
+				.card-poster {
+					width: 100%;
+				}
+			}
+			.date{
+				left: 45px;
 			}
 		}
 	}

@@ -19,10 +19,6 @@ const HomePage = () => {
 
   const onGetPopularMovies = () => dispatch(actions.getPopularMovies());
 
-  // const onGetTopRatedMovies = () => dispatch(actions.getTopRatedMovies())
-
-  // const onGetUpcomingMovies = () => dispatch(actions.getUpcomingMovies());
-
   const onGetBannerTrending = () => dispatch(actions.getBannerTrending());
 
   const onGetListGenres = () => dispatch(actions.getListGenres());

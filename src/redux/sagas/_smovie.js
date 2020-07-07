@@ -24,16 +24,16 @@ function* getTopRatedMovies (action) {
     if(filter) {
       //filtering data;
     }
-    yield put({ type: types.GET_TOP_RATED_MOVIES, data });
+    yield put({ type: types.GET_TOP_RATED_MOVIES_SUCCESS, data });
   } catch(error) {
-    yield put({ type: types.GET_TOP_RATED_MOVIES_SUCCESS, error });
+    yield put({ type: types.GET_TOP_RATED_MOVIES_FAILED, error });
   }
 }
 
 function* getUpcomingMovies (action) {
   try {
     const { page, filter } = action;
-    const data = yield call(services.getListTopRatedMovies, page);
+    const data = yield call(services.getListUpcomingMovies, page);
     if(filter) {
       //filtering data;
     }
