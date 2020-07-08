@@ -20,8 +20,8 @@ const CardList = ({ initialCategory, categories, data, currentPage, onLoadMore, 
   }, [data]);
 
   const _onSetView = event => {
-    console.log("Target:", event.target);
-    setViewType(ViewType.GRID);
+    console.log("Target:", event.target.id);
+    setViewType(event.target.id);
   }
 
   const _onClickNav = value => {
@@ -61,8 +61,8 @@ const CardList = ({ initialCategory, categories, data, currentPage, onLoadMore, 
           )})}
         </div>
         <div className={"navigation-view"}>
-          <RiFunctionLine className={`text-${viewType === ViewType.GRID ? 'pink' : 'gray'}`} size={20} onClick={_onSetView} />
-          <RiMenu2Line className={`text-${viewType === ViewType.LIST ? 'pink' : 'gray'}`} size={20} onClick={_onSetView} />
+          <RiFunctionLine id={'grid'} className={`text-${viewType === ViewType.GRID ? 'pink' : 'gray'}`} size={20} onClick={_onSetView} />
+          <RiMenu2Line id={'list'} className={`text-${viewType === ViewType.LIST ? 'pink' : 'gray'}`} size={20} onClick={_onSetView} />
         </div>
       </div>
       <div className={"list-card"}>
