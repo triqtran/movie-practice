@@ -8,9 +8,7 @@ const Card = props => {
   const postPath = get(props,'poster_path', ''),
   date = get(props,'release_date', ''),
   vote = get(props,'vote_average', 0),
-  title = get(props, 'original_title', ''),
-  description = get(props, 'overview', ''),
-  viewType = get(props,'viewType', '')
+  title = get(props, 'original_title', '')
   
   return (
     <div className={'card'}>
@@ -23,7 +21,6 @@ const Card = props => {
           <div className={'card-description'}>
             <div className={'title'}>{title}</div>
             <div className={'overview'}>Action, music</div>
-            {/* <div className={`description ${viewType}`}>{description}</div> */}
           </div>
           <div className={'card-vote'}>{vote}</div>
         </div>
