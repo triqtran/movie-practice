@@ -5,7 +5,7 @@ import { get, map } from 'lodash';
 import ScreenBase from '../../elements/ScreenBase';
 import SlideBanners from '../../elements/SlideBanners';
 import CardList from '../../elements/CardList';
-import { CATEGORIES, CategoryType } from '../../../utils/Constant';
+import { CategoryType } from '../../../utils/Constant';
 const HomePage = () => {
 
   const dispatch = useDispatch();
@@ -18,16 +18,16 @@ const HomePage = () => {
     dispatch(actions.getListGenres());
   }, []);
 
-  const onCategory = value => {
+  const onCategory = (value, page = 1) => {
     switch(value) {
       case CategoryType.POPULAR:
-        dispatch(actions.getPopularMovies());
+        dispatch(actions.getPopularMovies(page));
         break;
       case CategoryType.TOPRATED:
-        dispatch(actions.getTopRatedMovies());
+        dispatch(actions.getTopRatedMovies(page));
         break;
       case CategoryType.UPCOMING:
-          dispatch(actions.getUpcomingMovies());
+          dispatch(actions.getUpcomingMovies(page));
           break;
       default:
           break;
@@ -35,7 +35,7 @@ const HomePage = () => {
   }
 
   const genreData = get(movieData, "genres"),
-  _categories = map(CATEGORIES, item => {
+  _categories = map(CategoryType.list, item => {
     const _item = item.value === 'genres' ? { ...item, sublist: genreData } : item;
     return _item;
   }),
@@ -46,7 +46,8 @@ const HomePage = () => {
     return { ...item, genreNames: map(genreIds, gid => get(genreMapData.get(gid), "name", "")) }
   }),
   movieType = get(movieData, "currentMovieType"),
-  data = get(movieData,`${movieType}.results`, []);
+  data = get(movieData,`${movieType}.results`, []),
+  page = get(movieData, `${movieType}.page`, 1);
 
   return (
     <ScreenBase>
@@ -58,6 +59,8 @@ const HomePage = () => {
               initialCategory={CategoryType.POPULAR} 
               categories={_categories} 
               data={data} 
+              currentPage={page}
+              onLoadMore={onCategory}
               onChooseCategory={onCategory} 
             />
           </div>

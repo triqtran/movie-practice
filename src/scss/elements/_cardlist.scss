@@ -106,10 +106,16 @@
 			flex-wrap: wrap;
 		}
 	}
-	.movie-loading{
+	.card-loading{
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		.ic-loading {
+			height: 20px;
+		}
+		.btn p {
+			color: $TEXT_GRAY_DARKER;
+		}
 	}
 	&.list{
 		.list-card{
@@ -158,7 +164,7 @@
 }
 
 @media only screen and (max-width: 768px) {
-	.movie-list {
+	.card-list {
 		.navigation-box {
 			.navigation-menu {
 				width: 100%;
@@ -168,11 +174,14 @@
 					width: 22%;
 					font-size: 13px;
 					font-family: "Nunito Sans", sans-serif;
+					padding-right: 10px;
 					&.dropdown{
-						
 						.nav-item-dropdown{
 							width: 60vw;
 							right: 0;
+							.list-dropdown {
+								text-align: center;
+							}
 						}
 					}
 				}

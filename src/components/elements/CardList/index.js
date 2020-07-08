@@ -1,15 +1,24 @@
-import React, { useState } from "react";
-import {map, size, get} from "lodash"
+import React, { useState, useEffect } from "react";
+import {map, size, get, isEqualWith} from "lodash"
 import Card from "../Card";
-import Loading from "../Loading";
-import { ViewType } from "../../../utils/Constant";
+import { ViewType, LOADING_ICON } from "../../../utils/Constant";
 import { RiMenu2Line, RiFunctionLine } from "react-icons/ri";
 
-const CardList = ({ initialCategory, categories, data, onChooseCategory }) => {
+let currentData;
+
+const CardList = ({ initialCategory, categories, data, currentPage, onLoadMore, onChooseCategory }) => {
 
   const [viewType, setViewType] = useState(ViewType.GRID);
   const [active, setActive]     = useState(initialCategory);
+  const [loadMore, setLoadMore] = useState(false);
     
+  useEffect(() => {
+    if(!isEqualWith(data, currentData)) {
+      currentData = data;
+      setLoadMore(false);
+    }
+  }, [data]);
+
   const _onSetView = event => {
     console.log("Target:", event.target);
     setViewType(ViewType.GRID);
@@ -18,6 +27,11 @@ const CardList = ({ initialCategory, categories, data, onChooseCategory }) => {
   const _onClickNav = value => {
     setActive(value);
     onChooseCategory && onChooseCategory(value);
+  }
+
+  const _onLoadMore = () => {
+    setLoadMore(true);
+    onLoadMore && onLoadMore(active, currentPage+1);
   }
 
   return (
@@ -35,7 +49,7 @@ const CardList = ({ initialCategory, categories, data, onChooseCategory }) => {
                 <p>{get(item, "name", "")}</p>
                 {hasSubList && (
                   <>
-                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    <i className="fa fa-angle-down" aria-hidden="true"></i>
                     <div className={"nav-item-dropdown"}>
                       {map(get(item, "sublist", []), (item, _ki)=>
                         <div className={'list-dropdown'} key={_ki}>{item.name}</div>
@@ -58,8 +72,11 @@ const CardList = ({ initialCategory, categories, data, onChooseCategory }) => {
           )}
         </div>
       </div>
-      <div className={'movie-loading'}>
-        <Loading />
+      <div className={'card-loading'}>
+        <button className={'btn btn-o'} onClick={_onLoadMore}>
+          {loadMore && <img src={LOADING_ICON} alt={'load more'} className={'ic-loading'} />}
+          <p>Loading</p>
+        </button>
       </div>
     </div>
   )
