@@ -28,7 +28,7 @@
 					width: 0%;
 					background-color: $LAYOUT_PINK;
 				}
-				&.active{
+				&.active {
 					color: $LAYOUT_PINK;
 					&::before {
 						width: 100%;
@@ -36,7 +36,7 @@
 					}
 				}
 				&.dropdown {
-					&.active{
+					&.active {
 						color: $LAYOUT_PINK;
 						&::before {
 							width: 100%;
@@ -47,11 +47,11 @@
 					p {
 						margin-right: 10px;
 					}
-					.nav-item-dropdown{
+					.nav-item-dropdown {
 						position: absolute;
 						top: 40px;
 						min-height: 100px;
-						background-color: #FFFFFF;
+						background-color: #ffffff;
 						z-index: 3;
 						width: 50vw;
 						box-shadow: 0px 0px 5px 0px $LAYOUT_GREY;
@@ -59,7 +59,7 @@
 						flex-wrap: wrap;
 						opacity: 0;
 						visibility: hidden;
-						.list-dropdown{
+						.list-dropdown {
 							display: flex;
 							width: 33.33%;
 							height: 50px;
@@ -67,16 +67,16 @@
 							align-items: center;
 						}
 					}
-					&:hover{
-						.nav-item-dropdown{
+					&:hover {
+						.nav-item-dropdown {
 							opacity: 1;
 							visibility: visible;
 							top: 29px;
-							transition: all .6s;
+							transition: all 0.6s;
 							color: $TEXT_GREY_LIGHTER;
-							.list-dropdown{
-								&:hover{
-									transition: all .3s;
+							.list-dropdown {
+								&:hover {
+									transition: all 0.3s;
 									color: $LAYOUT_PINK;
 								}
 							}
@@ -106,7 +106,7 @@
 			flex-wrap: wrap;
 		}
 	}
-	.card-loading{
+	.card-loading {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -117,40 +117,40 @@
 			color: $TEXT_GRAY_DARKER;
 		}
 	}
-	&.list{
-		.list-card{
-			.list-item{
+	&.list {
+		.list-card {
+			.list-item {
 				width: 100%;
 				flex-direction: column;
-				.card{
+				.card {
 					width: 100%;
-					.card-item{
+					.card-item {
 						width: 100%;
 						display: flex;
-						.card-img{
+						.card-img {
 							width: 240px;
 							max-height: 270px;
 						}
-						.date{
+						.date {
 							top: 27px;
 							right: 30px;
 							bottom: inherit;
 							left: initial;
 						}
-						.card-content{
+						.card-content {
 							flex-direction: row-reverse;
-							.card-description{
-								.title{
+							.card-description {
+								.title {
 									font-size: 17px;
 									overflow: inherit;
 									text-overflow: inherit;
 									margin-bottom: 10px;
 								}
-								.overview{
+								.overview {
 									font-size: 15px;
 								}
 							}
-							.card-vote{
+							.card-vote {
 								position: initial;
 								margin-right: 20px;
 							}
@@ -158,7 +158,6 @@
 					}
 				}
 			}
-
 		}
 	}
 }
@@ -170,13 +169,13 @@
 				width: 100%;
 				.nav-item {
 					display: flex;
-    			justify-content: center;
+					justify-content: center;
 					width: 22%;
 					font-size: 13px;
 					font-family: "Nunito Sans", sans-serif;
 					padding-right: 10px;
-					&.dropdown{
-						.nav-item-dropdown{
+					&.dropdown {
+						.nav-item-dropdown {
 							width: 60vw;
 							right: 0;
 							.list-dropdown {
@@ -200,6 +199,57 @@
 					.card-description {
 						.title {
 							width: 58vw;
+						}
+					}
+				}
+			}
+		}
+		&.list {
+			.list-card {
+				.list-item {
+					.card {
+						.card-item {
+							.card-content {
+								.card-description {
+									.title {
+										width: 35vw;
+										overflow: hidden;
+										text-overflow: ellipsis;
+										white-space: nowrap;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 625px) {
+	.card-list {
+		&.list {
+			.list-card {
+				.list-item {
+					.card {
+						.card-item {
+							.date {
+								display: none;
+							}
+							.card-img {
+								max-height: 210px;
+							}
+							.card-content {
+								.card-description {
+									.title {
+										font-size: 13px;
+									}
+									.overview {
+										font-size: 12px;
+									}
+								}
+							}
 						}
 					}
 				}
