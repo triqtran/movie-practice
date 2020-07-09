@@ -23,13 +23,13 @@ const Banner = ({ data }) => {
                 {/* <span className={'nav-item dashed'}>{'Duration 1h52m'}</span> */}
               </nav>
               <div className={'banner-feature'}>
-                <button className={'btn banner-feature-item'}>
+                <button className={'btn banner-feature-item btn-watch-hover'}>
                   <p>{'WATCH MOIVE'}</p>
                 </button>
-                <button className={'btn btn-o btn-border-white banner-feature-item'}>
+                <button className={'btn btn-o btn-border-white banner-feature-item btn-view-hover'}>
                   <p>{'VIEW INFO'}</p>
                 </button>
-                <button className={'btn btn-o banner-feature-item'}>
+                <button className={'btn btn-o banner-feature-item btn-add'}>
                   <FiPlus className={'text-white icon'} size={20} />
                   <p>{'ADD TO WISHLIS'}</p>
                 </button>
