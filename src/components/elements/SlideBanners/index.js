@@ -42,8 +42,8 @@ const SlideBanners = ({ data }) => {
         completed={Math.floor((selected + 1) / SIZE_BANNER * 100)} 
         bgcolor={'#FF0079'}
         baseBgColor={'#FFFFFF'}
-        height={'3'}
-        labelSize={'0'}
+        height={3}
+        labelSize={0}
       />
     </>
   );
