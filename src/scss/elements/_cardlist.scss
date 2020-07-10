@@ -115,6 +115,10 @@
 		}
 		.btn p {
 			color: $TEXT_GRAY_DARKER;
+			&:hover{
+				color: $TEXT_PINK;
+				transition: all .6s;
+			}
 		}
 	}
 	&.list {
